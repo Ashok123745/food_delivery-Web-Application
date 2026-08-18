@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<!-- Note: Consider renaming "login video.mp4" to "login_video.mp4" to avoid space issues on Tomcat -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="Videos/login_video.mp4" type="video/mp4">
+</video>
+
+    <div class="form-container">
+        <h2>Login</h2>
+
+        <!-- THIS IS WHERE YOU LINK THE SERVLET -->
+        <form action="callLoginServlet" method="POST">
+
+            <div class="input-box">
+                <!-- Added name="email" (Change to "username" if you log in using username) -->
+                <input type="text" name="username" placeholder=" " required>
+                <span>username</span>
+            </div>
+
+            <div class="input-box">
+                <!-- Added name="password" -->
+                <input type="password" name="password" placeholder=" " required>
+                <span>Password</span>
+            </div>
+
+            <button type="submit" class="submit-btn">Login</button>
+
+            <p class="register-text">
+                Don't have an account?
+                <a href="register.html">Sign Up</a>
+            </p>
+            
+        </form>
+        <!-- FORM END -->
+    </div>
+    
+<!-- SweetAlert2 Library & Handlers -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get("status");
+            const error = urlParams.get("error");
+
+            // 1. REGISTRATION SUCCESS (?status=registered)
+            if (status === "registered") {
+                Swal.fire({
+                    title: "Registered Successfully!",
+                    text: "Your FoodZone account is ready. Please login to continue.",
+                    icon: "success",
+                    confirmButtonColor: "#ff493d",
+                    confirmButtonText: "Log In",
+                    background: "#141821",
+                    color: "#ffffff"
+                });
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // 2. REGISTRATION FAILED (?status=failed)
+            if (status === "failed") {
+                Swal.fire({
+                    title: "Registration Failed!",
+                    text: "Unable to create account. Username or email may already exist.",
+                    icon: "error",
+                    confirmButtonColor: "#ef4444",
+                    confirmButtonText: "Try Again",
+                    background: "#141821",
+                    color: "#ffffff"
+                });
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // 3. LOGIN FAILED: INCORRECT PASSWORD (?error=invalid_password)
+            if (error === "invalid_password") {
+                Swal.fire({
+                    title: "Incorrect Password!",
+                    text: "The password you entered is incorrect. Please try again.",
+                    icon: "error",
+                    confirmButtonColor: "#ef4444",
+                    confirmButtonText: "Retry",
+                    background: "#141821",
+                    color: "#ffffff"
+                });
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // 4. LOGIN FAILED: USER NOT FOUND (?error=user_not_found)
+            if (error === "user_not_found") {
+                Swal.fire({
+                    title: "User Not Found!",
+                    text: "No account found with this username. Please sign up first.",
+                    icon: "error",
+                    confirmButtonColor: "#ef4444",
+                    confirmButtonText: "Sign Up",
+                    background: "#141821",
+                    color: "#ffffff"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "register.html";
+                    }
+                });
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // 5. LOGIN FAILED: GENERAL FALLBACK (?status=invalid)
+            if (status === "invalid" || status === "login_failed") {
+                Swal.fire({
+                    title: "Login Failed!",
+                    text: "Invalid username or password. Please try again.",
+                    icon: "error",
+                    confirmButtonColor: "#ef4444",
+                    confirmButtonText: "Retry",
+                    background: "#141821",
+                    color: "#ffffff"
+                });
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+</body>
+</html>

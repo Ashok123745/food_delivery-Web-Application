@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery - Registration</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="register.css">
+</head> 
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+    <!-- FIX 1: Fixed filename extension from chicken_mp4 to chicken.mp4 -->
+    <source src="Videos/chicken.mp4" type="video/mp4">
+</video>
+
+    <div class="register-container">
+        <h2>Create Account</h2>
+
+        <form id="registerForm" action="callRegisterServlet" method="POST" onsubmit="return handleRegister(event)">
+
+            <!-- Database Column: username -->
+            <div class="input-box">
+                <input type="text" name="username" placeholder=" " required>
+                <span>Full Name / Username</span>
+            </div>
+
+            <!-- Database Column: email -->
+            <div class="input-box">
+                <input type="email" name="email" placeholder=" " required>
+                <span>Email Address</span>
+            </div>
+
+            <!-- Database Column: mobile -->
+            <div class="input-box">
+                <input type="tel" name="mobile" placeholder=" " required>
+                <span>Mobile Number</span>
+            </div>
+
+            <!-- Database Column: address -->
+            <div class="input-box">
+                <input type="text" name="address" placeholder=" " required>
+                <span>Delivery Address</span>
+            </div>
+
+            <!-- Database Column: password -->
+            <div class="input-box password-box">
+                <input type="password" name="password" id="password" placeholder=" " required>
+                <span>Password</span>
+                <i class="fa-solid fa-eye-slash toggle-eye" onclick="togglePassword('password', this)"></i>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="input-box password-box">
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder=" " required>
+                <span>Confirm Password</span>
+                <i class="fa-solid fa-eye-slash toggle-eye" onclick="togglePassword('confirmPassword', this)"></i>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="role-selection">
+                <h3>Select Role</h3>
+                <div class="roles">
+                    <div class="role-box">
+                        <input type="radio" id="customer" name="role" value="Customer" checked>
+                        <label for="customer">
+                            <span class="role-icon">👤</span>
+                            Customer
+                        </label>
+                    </div>
+                    <div class="role-box">
+                        <input type="radio" id="restaurant" name="role" value="Restaurant">
+                        <label for="restaurant">
+                            <span class="role-icon">🏪</span>
+                            Restaurant
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" required>
+                <label>I agree to the Terms & Conditions</label>
+            </div>
+
+            <button type="submit" class="register-btn">Register</button>
+
+            <p class="login-text">
+                Already have an account?
+                <!-- FIX 2: Fixed link pointing to login.html instead of login.jsp -->
+                <a href="login.html">Login</a>
+            </p>
+
+        </form>
+
+    </div>
+
+    <!-- SUCCESS POPUP MODAL -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="icon-circle">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Registration Successful!</h3>
+            <p>Your account has been created successfully. You can now login to enjoy your food delivery experience.</p>
+            <a href="login.html" class="modal-btn">Go to Login</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Password Visibility Toggle Function
+        function togglePassword(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text"; 
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+                icon.style.color = "#00ffff"; 
+            } else {
+                passwordInput.type = "password"; 
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+                icon.style.color = "#ddd"; 
+            }
+        }
+
+        // Show Success Popup
+        function showSuccessPopup() {
+            document.getElementById("successModal").classList.add("active");
+        }
+
+        // Client-Side Validation for Password Matching
+        function handleRegister(event) {
+            const pwd = document.getElementById("password").value;
+            const confirmPwd = document.getElementById("confirmPassword").value;
+
+            if (pwd !== confirmPwd) {
+                event.preventDefault(); // Block form submission
+                alert("Passwords do not match! Please verify your password.");
+                return false;
+            }
+            return true;
+        }
+
+        // Auto-trigger Popup if Servlet redirects with ?status=success in URL
+        window.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get("status") === "success") {
+                showSuccessPopup();
+            }
+        });
+    </script>
+
+</body>
+</html>

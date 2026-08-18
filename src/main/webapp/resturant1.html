@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodZone | Best Restaurants</title>
+    <link rel="stylesheet" href="resturant1.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+    <header class="navbar">
+        <!-- LOGO -->
+        <div class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodZone</span>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search" placeholder="Search restaurants, cuisines or dishes">
+        </div>
+
+        <!-- NAVIGATION LINKS -->
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Login</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+    <section class="hero">
+
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+
+            <div class="small-title">
+                <span>🍽️</span>
+                <span>Welcome to FoodZone</span>
+            </div>
+
+            <h1>
+                Discover the Best
+                <span>Food Near You</span>
+            </h1>
+
+            <p>
+                Order from your favourite restaurants and enjoy
+                delicious food delivered fresh and fast to your
+                doorstep.
+            </p>
+
+            <!-- BUTTONS -->
+            <div class="hero-buttons">
+                <a href="#restaurants" class="order-btn">
+                    Order Now
+                    <span>→</span>
+                </a>
+                <a href="#restaurants" class="explore-btn">
+                    Explore Restaurants
+                </a>
+            </div>
+
+            <!-- FEATURES -->
+            <div class="hero-features">
+                <div>
+                    <span>🚚</span>
+                    <strong>Fast Delivery</strong>
+                </div>
+                <div>
+                    <span>⭐</span>
+                    <strong>Best Quality</strong>
+                </div>
+                <div>
+                    <span>🏷️</span>
+                    <strong>Great Offers</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE VIDEO -->
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="Videos/Burger-AI-Video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="video-overlay">
+                <div class="video-label">
+                    🔥 Delicious Food
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESTAURANTS SECTION
+    ====================================================== -->
+    <section class="restaurants-section" id="restaurants">
+
+        <!-- SECTION HEADER -->
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">EXPLORE NOW</span>
+                <h2>Popular <span>Restaurants</span></h2>
+                <p>Discover the best restaurants around Bangalore</p>
+            </div>
+
+            <a href="#" class="view-all-btn">View All →</a>
+        </div>
+
+
+        <!-- RESTAURANT GRID -->
+        <div class="restaurant-grid">
+
+            <!-- RESTAURANT 1 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/meghana biryani.jpg" alt="Meghana Biryani">
+                    <span class="offer">20% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Meghana Biryani</h3>
+                    <p class="cuisine">Biryani</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.8</span>
+                        <span>🛵 30 mins</span>
+                    </div>
+                    <div class="location">📍 Koramangala, Bangalore</div>
+                    <a href="restaurant.jsp?id=1" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 2 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/nandhana.jpeg" alt="Nandhana Palace">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Nandhana Palace</h3>
+                    <p class="cuisine">Andhra</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.7</span>
+                        <span>🛵 35 mins</span>
+                    </div>
+                    <div class="location">📍 Indiranagar, Bangalore</div>
+                    <a href="restaurant.jsp?id=2" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 3 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/empire.jpg" alt="Empire Restaurant">
+                    <span class="offer">10% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Empire Restaurant</h3>
+                    <p class="cuisine">Multi Cuisine</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.6</span>
+                        <span>🛵 25 mins</span>
+                    </div>
+                    <div class="location">📍 Frazer Town, Bangalore</div>
+                    <a href="restaurant.jsp?id=3" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 4 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/Behrouz.jpeg" alt="Behrouz Biryani">
+                    <span class="offer">25% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Behrouz Biryani</h3>
+                    <p class="cuisine">Biryani</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.8</span>
+                        <span>🛵 40 mins</span>
+                    </div>
+                    <div class="location">📍 HSR Layout, Bangalore</div>
+                    <a href="restaurant.jsp?id=4" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 5 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/Mcdonalds.jpeg" alt="McDonald's">
+                    <span class="offer">20% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>McDonald's</h3>
+                    <p class="cuisine">Fast Food</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.5</span>
+                        <span>🛵 20 mins</span>
+                    </div>
+                    <div class="location">📍 MG Road, Bangalore</div>
+                    <a href="restaurant.jsp?id=5" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 6 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/KFC.jpeg" alt="KFC">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>KFC</h3>
+                    <p class="cuisine">Fast Food</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.6</span>
+                        <span>🛵 22 mins</span>
+                    </div>
+                    <div class="location">📍 Jayanagar, Bangalore</div>
+                    <a href="restaurant.jsp?id=6" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 7 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/Burgerking.jpeg" alt="Burger King">
+                    <span class="offer">20% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Burger King</h3>
+                    <p class="cuisine">Burgers</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.5</span>
+                        <span>🛵 20 mins</span>
+                    </div>
+                    <div class="location">📍 Whitefield, Bangalore</div>
+                    <a href="restaurant.jsp?id=7" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 8 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/udupi.jpeg" alt="Udupi Restaurant">
+                    <span class="offer">10% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Udupi Restaurant</h3>
+                    <p class="cuisine">South Indian</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.7</span>
+                        <span>🛵 25 mins</span>
+                    </div>
+                    <div class="location">📍 Malleshwaram, Bangalore</div>
+                    <a href="restaurant.jsp?id=8" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 9 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/rameshwaram.jpeg" alt="The Rameshwaram Cafe">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>The Rameshwaram Cafe</h3>
+                    <p class="cuisine">South Indian</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.9</span>
+                        <span>🛵 30 mins</span>
+                    </div>
+                    <div class="location">📍 Rajajinagar, Bangalore</div>
+                    <a href="restaurant.jsp?id=9" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 10 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/Dominios.jpg" alt="Domino's Pizza">
+                    <span class="offer">20% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Domino's Pizza</h3>
+                    <p class="cuisine">Pizza</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.6</span>
+                        <span>🛵 25 mins</span>
+                    </div>
+                    <div class="location">📍 BTM Layout, Bangalore</div>
+                    <a href="restaurant.jsp?id=10" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 11 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/haldirams.jpeg" alt="Haldiram's">
+                    <span class="offer">10% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Haldiram's</h3>
+                    <p class="cuisine">North Indian</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.7</span>
+                        <span>🛵 30 mins</span>
+                    </div>
+                    <div class="location">📍 Electronic City, Bangalore</div>
+                    <a href="restaurant.jsp?id=11" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 12 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/creamstone.jpeg" alt="Cream Stone">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Cream Stone</h3>
+                    <p class="cuisine">Desserts</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.8</span>
+                        <span>🛵 20 mins</span>
+                    </div>
+                    <div class="location">📍 Bellandur, Bangalore</div>
+                    <a href="restaurant.jsp?id=12" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 13 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/subway.jpg" alt="Subway">
+                    <span class="offer">20% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Subway</h3>
+                    <p class="cuisine">Sandwiches</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.5</span>
+                        <span>🛵 18 mins</span>
+                    </div>
+                    <div class="location">📍 Marathahalli, Bangalore</div>
+                    <a href="restaurant.jsp?id=13" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 14 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/pizzahut.jpg" alt="Pizza Hut">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Pizza Hut</h3>
+                    <p class="cuisine">Pizza</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.6</span>
+                        <span>🛵 25 mins</span>
+                    </div>
+                    <div class="location">📍 Banashankari, Bangalore</div>
+                    <a href="restaurant.jsp?id=14" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 15 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/paradise.jpeg" alt="Paradise Biryani">
+                    <span class="offer">25% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Paradise Biryani</h3>
+                    <p class="cuisine">Biryani</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.8</span>
+                        <span>🛵 35 mins</span>
+                    </div>
+                    <div class="location">📍 Yelahanka, Bangalore</div>
+                    <a href="restaurant.jsp?id=15" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 16 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/smoor.jpeg" alt="Smoor">
+                    <span class="offer">10% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Smoor</h3>
+                    <p class="cuisine">Cafe & Desserts</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.7</span>
+                        <span>🛵 20 mins</span>
+                    </div>
+                    <div class="location">📍 UB City, Bangalore</div>
+                    <a href="restaurant.jsp?id=16" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 17 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/wow momo.jpeg" alt="Wow! Momo">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Wow! Momo</h3>
+                    <p class="cuisine">Momos</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.6</span>
+                        <span>🛵 20 mins</span>
+                    </div>
+                    <div class="location">📍 JP Nagar, Bangalore</div>
+                    <a href="restaurant.jsp?id=17" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 18 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/Deccan Paradise.jpeg" alt="Deccan Paradise">
+                    <span class="offer">20% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Deccan Paradise</h3>
+                    <p class="cuisine">South Indian</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.7</span>
+                        <span>🛵 25 mins</span>
+                    </div>
+                    <div class="location">📍 Koramangala, Bangalore</div>
+                    <a href="restaurant.jsp?id=18" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 19 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/Louis Burger.jpeg" alt="Louis Burger">
+                    <span class="offer">15% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>Louis Burger</h3>
+                    <p class="cuisine">Burgers</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.8</span>
+                        <span>🛵 20 mins</span>
+                    </div>
+                    <div class="location">📍 Indiranagar, Bangalore</div>
+                    <a href="restaurant.jsp?id=19" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+            <!-- RESTAURANT 20 -->
+            <div class="restaurant-card">
+                <div class="restaurant-image">
+                    <img src="Images/ibaco.jpeg" alt="ibaco">
+                    <span class="offer">10% OFF</span>
+                    <span class="heart">♡</span>
+                </div>
+                <div class="restaurant-info">
+                    <h3>ibaco</h3>
+                    <p class="cuisine">Desserts & Ice Cream</p>
+                    <div class="restaurant-meta">
+                        <span class="rating">⭐ 4.9</span>
+                        <span>🛵 15 mins</span>
+                    </div>
+                    <div class="location">📍 HSR Layout, Bangalore</div>
+                    <a href="restaurant.jsp?id=20" class="menu-btn">View Menu →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer class="foodzone-footer">
+        <div class="footer-main">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">🍔</span>
+                    <span>FoodZone</span>
+                </div>
+                <p>
+                    Delicious food from the best restaurants,
+                    delivered fresh and fast to your doorstep.
+                </p>
+                <div class="footer-tagline">
+                    🍴 <span>Eat Better. Order Faster.</span>
+                </div>
+            </div>
+
+            <!-- FOODZONE -->
+            <div class="footer-section">
+                <h3>FoodZone</h3>
+                <a href="#">About Us</a>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Partner With Us</a>
+            </div>
+
+            <!-- EXPLORE -->
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <a href="#restaurants">Restaurants</a>
+                <a href="#">Offers</a>
+                <a href="#">Popular Food</a>
+                <a href="#">My Orders</a>
+            </div>
+
+            <!-- WHAT WE OFFER -->
+            <div class="footer-section">
+                <h3>What We Offer</h3>
+                <a href="#">🍕 Wide Food Selection</a>
+                <a href="#">🚀 Fast Delivery</a>
+                <a href="#">💰 Best Deals</a>
+                <a href="#">⭐ Top Restaurants</a>
+            </div>
+
+            <!-- CONTACT US -->
+            <div class="footer-section contact-section">
+                <h3>Contact Us</h3>
+                <div class="contact-row">
+                    <span>📍</span>
+                    <p>Bangalore, India</p>
+                </div>
+                <div class="contact-row">
+                    <span>📞</span>
+                    <p>+91 83091 12610</p>
+                </div>
+                <div class="contact-row">
+                    <span>✉️</span>
+                    <p>support@foodzone.com</p>
+                </div>
+                <div class="contact-row">
+                    <span>⏰</span>
+                    <p>24 × 7 Support</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+            <p>© 2026 <strong>FoodZone</strong>. All Rights Reserved@ASHOK DEVA.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <span>•</span>
+                <a href="#">Terms & Conditions</a>
+                <span>•</span>
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

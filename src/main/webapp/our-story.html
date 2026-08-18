@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story - FoodZone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Keyframe Animations */
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes moveOrb1 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(100px, 60px) scale(1.2); }
+    }
+
+    @keyframes moveOrb2 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(-80px, -70px) scale(1.25); }
+    }
+
+    @keyframes floatParticles {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.16; }
+      85% { opacity: 0.16; }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #09090c, #141419, #1a120e, #0d0d11);
+      background-size: 400% 400%;
+      animation: bgShift 16s ease infinite;
+      color: #e2e8f0;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Glow Orbs */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(85px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .orb-1 {
+      width: 380px;
+      height: 380px;
+      background: #ff5722;
+      top: 10%;
+      left: 8%;
+      animation: moveOrb1 18s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: #ff9800;
+      bottom: 12%;
+      right: 8%;
+      animation: moveOrb2 22s ease-in-out infinite;
+    }
+
+    /* Floating Background Particles */
+    .particle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      bottom: -50px;
+      color: #ff9800;
+      animation: floatParticles linear infinite;
+    }
+
+    .p1 { left: 10%; font-size: 26px; animation-duration: 15s; animation-delay: 0s; }
+    .p2 { left: 28%; font-size: 20px; animation-duration: 19s; animation-delay: 3s; }
+    .p3 { left: 54%; font-size: 30px; animation-duration: 23s; animation-delay: 1s; }
+    .p4 { left: 76%; font-size: 22px; animation-duration: 17s; animation-delay: 5s; }
+    .p5 { left: 90%; font-size: 24px; animation-duration: 21s; animation-delay: 2s; }
+
+    /* Header */
+    .page-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(18, 18, 24, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 24px;
+      background: linear-gradient(45deg, #ffffff, #ffa726);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .back-home {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e0e0e0;
+      padding: 8px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-home:hover {
+      background: #ff5722;
+      border-color: #ff5722;
+      color: #fff;
+      transform: translateX(-3px);
+      box-shadow: 0 4px 16px rgba(255, 87, 34, 0.35);
+    }
+
+    /* Content Area */
+    .content-container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .content-container h2 {
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 5px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .policy-section {
+      background: rgba(24, 24, 30, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 24px 28px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .policy-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #ff5722, #ff9800);
+    }
+
+    .policy-section:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 87, 34, 0.4);
+      box-shadow: 0 12px 30px rgba(255, 87, 34, 0.15);
+    }
+
+    .policy-section h3 {
+      margin-top: 0;
+      color: #ffa726;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .policy-section p {
+      color: #cbd5e1;
+      margin-bottom: 0;
+    }
+
+    .simple-footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(18, 18, 24, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <!-- Floating Particles -->
+  <div class="particle-container">
+    <i class="fa-solid fa-burger particle p1"></i>
+    <i class="fa-solid fa-pizza-slice particle p2"></i>
+    <i class="fa-solid fa-utensils particle p3"></i>
+    <i class="fa-solid fa-bowl-rice particle p4"></i>
+    <i class="fa-solid fa-mug-hot particle p5"></i>
+  </div>
+
+  <header class="page-header">
+    <h1>🍔 FoodZone</h1>
+    <a href="callResturantServlet" class="back-home">
+      <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+  </header>
+
+  <main class="content-container">
+    <h2>Our Story</h2>
+    <p class="subtitle">How FoodZone Came to Life</p>
+
+    <section class="policy-section">
+      <h3>How It All Started</h3>
+      <p>FoodZone was founded in 2026 with a vision to redefine food delivery. We noticed that people often had to compromise between fast delivery and food quality—so we built a platform to bridge that gap.</p>
+    </section>
+
+    <section class="policy-section">
+      <h3>Growing Together</h3>
+      <p>Starting with just a few partner restaurants, FoodZone has grown into a platform connecting thousands of hungry users with hundreds of top culinary spots across the city.</p>
+    </section>
+  </main>
+
+  <footer class="simple-footer">
+    <p>© 2026 FoodZone. All Rights Reserved @ASHOK DEVA.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery System - Technical Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0b0e14;
+            color: #d1d5db;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #11151f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 28px;
+            border-bottom: 2px solid #ff493d;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: #ff493d;
+            font-size: 20px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #60a5fa;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p, ul {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        ul {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #161b26;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 13px;
+        }
+        th {
+            background: #1e2433;
+            color: #f3f4f6;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        pre {
+            background: #080a0f;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 16px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            color: #38bdf8;
+            margin: 15px 0;
+        }
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #f87171;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Software Design & Technical Documentation: Food Delivery Application</h1>
+
+    <h2>1. System Overview & Requirement Specifications (SRS)</h2>
+    <ul>
+        <li><strong>Project Title:</strong> FoodZone Online Food Delivery System</li>
+        <li><strong>Architecture Style:</strong> Model-View-Controller (MVC) Monolith</li>
+        <li><strong>Runtime Environment:</strong> Java EE, Apache Tomcat 9.0+, MySQL Server 8.0+</li>
+    </ul>
+
+    <h3>Role-Based Access Matrix</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Role (ENUM)</th>
+                <th>Permissions & System Scope</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>CUSTOMER</code></td>
+                <td>Register, log in, browse restaurants/menus, add items to cart, place orders, view order confirmations.</td>
+            </tr>
+            <tr>
+                <td><code>RESTURANT OWNER</code></td>
+                <td>Access live kitchen dashboard, monitor incoming orders, update live order dispatch statuses, add new menu items.</td>
+            </tr>
+            <tr>
+                <td><code>ADMIN</code></td>
+                <td>System-wide oversight, user account management, platform configurations, system diagnostics.</td>
+            </tr>
+            <tr>
+                <td><code>DELIVERY PARTNER</code></td>
+                <td>View allocated delivery orders, navigate drop-off locations, update delivery fulfillment statuses.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>2. Technical Architecture & Component Interaction</h2>
+    <pre>
++-------------------------------------------------------------+
+|                        Browser Layer                        |
+|  (HTML5, CSS3, JavaScript, SweetAlert2, Canvas-Confetti)    |
++------------------------------+------------------------------+
+                               | HTTP POST / GET
+                               v
++-------------------------------------------------------------+
+|                      Controller Layer                       |
+|     (Servlets: LoginServlet, RegisterServlet, Cart, etc.)   |
++------------------------------+------------------------------+
+                               | Java Calls
+                               v
++-------------------------------------------------------------+
+|                   Data Access Layer (DAO)                   |
+|          (UserDAO, MenuDAO, OrderDAO, OrderItemDAO)         |
++------------------------------+------------------------------+
+                               | JDBC Connection Pool
+                               v
++-------------------------------------------------------------+
+|                   Relational Database Tier                  |
+|                (MySQL Database: food_delivery)              |
++-------------------------------------------------------------+
+    </pre>
+
+    <h2>3. Database Schema & Data Dictionary (Database: food_delivery)</h2>
+    
+    <h3>A. `users` Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Column Name</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>idusers</code></td><td>INT</td><td>Primary Key, Auto Increment</td><td>Unique user identifier</td></tr>
+            <tr><td><code>username</code></td><td>VARCHAR(100)</td><td>Unique, Not Null</td><td>Account handle</td></tr>
+            <tr><td><code>password</code></td><td>VARCHAR(255)</td><td>Not Null</td><td>BCrypt hashed password</td></tr>
+            <tr><td><code>email</code></td><td>VARCHAR(150)</td><td>Unique, Not Null</td><td>User email</td></tr>
+            <tr><td><code>mobile</code></td><td>VARCHAR(15)</td><td>Not Null</td><td>Contact phone number</td></tr>
+            <tr><td><code>address</code></td><td>TEXT</td><td>Not Null</td><td>Default delivery address</td></tr>
+            <tr><td><code>role</code></td><td>ENUM(...)</td><td>Not Null</td><td>CUSTOMER, ADMIN, RESTURANT OWNER, DELIVERY PARTNER</td></tr>
+        </tbody>
+    </table>
+
+    <h3>B. `orders` Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Column Name</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>orderId</code></td><td>INT</td><td>Primary Key, Auto Increment</td><td>Unique purchase identifier</td></tr>
+            <tr><td><code>userId</code></td><td>INT</td><td>Foreign Key (users.idusers)</td><td>Purchasing customer ID</td></tr>
+            <tr><td><code>totalAmount</code></td><td>DECIMAL(10,2)</td><td>Not Null</td><td>Total order bill</td></tr>
+            <tr><td><code>orderStatus</code></td><td>VARCHAR(50)</td><td>Default 'PENDING'</td><td>PENDING, PREPARING, DELIVERED</td></tr>
+            <tr><td><code>orderDate</code></td><td>DATETIME</td><td>Current Timestamp</td><td>Timestamp when order was placed</td></tr>
+        </tbody>
+    </table>
+
+    <h3>C. `orderitem` Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Column Name</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>orderItemId</code></td><td>INT</td><td>Primary Key, Auto Increment</td><td>Unique item entry ID</td></tr>
+            <tr><td><code>orderId</code></td><td>INT</td><td>Foreign Key (orders.orderId)</td><td>Reference to parent order</td></tr>
+            <tr><td><code>menuId</code></td><td>INT</td><td>Foreign Key (menu.menuId)</td><td>Ordered dish ID</td></tr>
+            <tr><td><code>quantity</code></td><td>INT</td><td>Not Null</td><td>Number of units ordered</td></tr>
+            <tr><td><code>price</code></td><td>DECIMAL(10,2)</td><td>Not Null</td><td>Price snapshot at checkout</td></tr>
+        </tbody>
+    </table>
+
+    <h2>4. Controller Endpoints Specification</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>URI / Endpoint Mapping</th>
+                <th>Method</th>
+                <th>Trigger Event</th>
+                <th>Target / Parameter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>/callRegisterServlet</code></td>
+                <td>POST</td>
+                <td>User Registration</td>
+                <td>?status=registered | ?status=failed</td>
+            </tr>
+            <tr>
+                <td><code>/callLoginServlet</code></td>
+                <td>POST</td>
+                <td>Authentication</td>
+                <td>/callResturantServlet | /restaurantDashboard.jsp | ?error=invalid_password</td>
+            </tr>
+            <tr>
+                <td><code>/updateOrderStatusServlet</code></td>
+                <td>POST</td>
+                <td>Kitchen Actions</td>
+                <td>HTTP 200 (PENDING / PREPARING / DELIVERED)</td>
+            </tr>
+            <tr>
+                <td><code>/logoutServlet</code></td>
+                <td>GET</td>
+                <td>Session Invalidation</td>
+                <td>/login.html?status=logout</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>5. Database Reset Script</h2>
+    <pre>
+SET FOREIGN_KEY_CHECKS = 0;
+
+DELETE FROM orderitem;
+DELETE FROM orders;
+DELETE FROM users;
+
+ALTER TABLE orderitem AUTO_INCREMENT = 1;
+ALTER TABLE orders AUTO_INCREMENT = 1;
+ALTER TABLE users AUTO_INCREMENT = 1;
+
+SET FOREIGN_KEY_CHECKS = 1;
+    </pre>
+</div>
+
+</body>
+</html>

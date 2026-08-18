@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("food.jpg") center/cover no-repeat;
+    overflow-y: auto;
+}
+
+/* Background Video */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Dark Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+}
+
+/* Glassmorphism Container */
+.register-container {
+    position: relative;
+    z-index: 1;
+    width: 380px;
+    padding: 20px 25px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, .3);
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Compact Inputs */
+.input-box {
+    position: relative;
+    margin: 12px 0;
+    width: 100%;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(255, 255, 255, .5);
+    color: white;
+    font-size: 14px;
+}
+
+.input-box span {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    color: #ddd;
+    pointer-events: none;
+    transition: .3s;
+    font-size: 14px;
+}
+
+/* Floating Animation */
+.input-box input:focus + span,
+.input-box input:not(:placeholder-shown) + span {
+    top: -12px;
+    left: 0;
+    font-size: 11px;
+    color: #00ffff;
+}
+
+/* Password Eye Icon */
+.input-box.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box input {
+    padding-right: 35px !important;
+}
+
+.password-box .toggle-eye {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    color: #ddd;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.password-box .toggle-eye:hover {
+    color: #00ffff;
+}
+
+/* Role Selection */
+.role-selection {
+    margin: 12px 0;
+}
+
+.role-selection h3 {
+    text-align: center;
+    color: white;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.roles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.role-box input {
+    display: none;
+}
+
+.role-box label {
+    height: 55px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    transition: 0.3s;
+}
+
+.role-icon {
+    font-size: 18px;
+}
+
+.role-box label:hover {
+    transform: scale(1.03);
+    background: #ff7b00;
+    color: white;
+}
+
+.role-box input:checked + label {
+    background: #ff7b00;
+    color: white;
+    box-shadow: 0 0 10px #ff7b00;
+}
+
+.checkbox {
+    color: white;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.checkbox input {
+    margin-right: 6px;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ff9800, #ff5722);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.register-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 12px rgba(255, 152, 0, .5);
+}
+
+.login-text {
+    margin-top: 12px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+
+.login-text a {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ========================================================= */
+/* SUCCESS POPUP MODAL STYLES                                */
+/* ========================================================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Active State to trigger display */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px 25px;
+    width: 340px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    transform: scale(0.7);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+.icon-circle {
+    font-size: 55px;
+    color: #00ffff;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px #00ffff);
+}
+
+.modal-card h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.modal-card p {
+    color: #e0e0e0;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.modal-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ff9800, #ff5722);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.4);
+}
+
+.modal-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px rgba(255, 152, 0, 0.7);
+}
