@@ -1,4 +1,4 @@
-package com.tap.utility; // Check and keep your actual package name
+package com.tap.utility; // Use your actual package name
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,11 +11,11 @@ public class DBConnectRailway {
             if (connection == null || connection.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
-                String host = "mysql.railway.internal";
-                String port = "3306";
+                String host = "altaria.proxy.rlwy.net";
+                String port = "15419";
                 String dbName = "railway";
                 String user = "root";
-                String pass = "wyVlEEmOidvHefhCVcVFLLrYtgHJGLGti";
+                String pass = "aTbqRYzKwhTYGzsXqyLtXmREHlrKifsl";
 
                 String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false&allowPublicKeyRetrieval=true";
 
