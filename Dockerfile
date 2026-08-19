@@ -1,5 +1,10 @@
 FROM tomcat:9.0-jdk17-openjdk-slim
+
+# Copy compiled classes
 COPY ./build/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
-COPY ./WebContent /usr/local/tomcat/webapps/ROOT/
+
+# Copy web files (JSPs, HTML, CSS, WEB-INF)
+COPY ./src/main/webapp /usr/local/tomcat/webapps/ROOT/
+
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
