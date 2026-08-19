@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/callResturantServlet")
 public class Resturantservlet extends HttpServlet {
 
-    @Override
+ @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         // 1. Fetch data from DAO
